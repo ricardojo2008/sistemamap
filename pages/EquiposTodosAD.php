@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- 
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,9 +28,13 @@
 
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!-- Custom Search Pane -->
-    <link href="../bower_components/searchpane/dataTables.searchPane.min.css" rel="stylesheet" type="text/css">
-	<script src="../bower_components/searchpane/dataTables.searchPane.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
@@ -46,17 +51,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Verificación de Equipos Mapfre.</a>
+                <a class="navbar-brand" href="index.html"></a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
+                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil Uuasuario</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Actulalizar Perfil</a>
@@ -70,7 +79,7 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-			
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -85,17 +94,17 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
+                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mapfre<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                               <li>
+                                <li>
                                     <a href="EquiposLandesk.php">Equipos Landesk</a>
                                 </li>
 								<li>
                                     <a href="EquiposMapfreTodos.php">Equipos / Servidores / Notebook / Detallado</a>
-                                </li>                                
-								<li>
-                                    <a href="EquiposTodosAD.php">Equipos AD</a>
+                                </li>
+                                <li>
+                                    <a href="EquiposTodosAD.php">Equipos AD (PAR)</a>
                                 </li>
                                 <li>
                                     <a href="envios.php">Envios</a>
@@ -109,170 +118,111 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-		
+
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Gestión de Envios </h1>
+                <div class="col-lg-24">
+                    <h1 class="page-header">Listado de Equipos del AD (PAR) POR OFICINA</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-			<div class="row">
-				<div class="col-lg-12">
-								
-				<?php if(!empty($_GET['incluir'])) { ?>
-					<div class="alert alert-warning alert-dismissable">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						El envio se agreg&oacute; con &eacute;xito.
-					</div>
-				<?php } ?>	
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							Registro de envios.
-						</div>
-						<div class="panel-body">
-							<form role="form" action="formenvios.php" method="post">
-							<div class="col-lg-3" class="form-group">								
-								<label>Ubicacion</label>								
-								<input class="form-control" value='' name='ubicacion' placeholder="Escribir dirección de envio.">				
-							</div>
-							<div class="col-lg-3" class="form-group">								
-								<label>Usuario Destino</label>								
-								<input class="form-control" value='' name='usuario' placeholder="Nombre del Usuario destinatario">
-							</div>
-							<div class="col-lg-3" class="form-group">								
-								<label>Marca</label>								
-								<input class="form-control" value='' name='marca' placeholder="	Ingrese una marca del equipo">			
-							</div>
-							<div class="col-lg-3" class="form-group">								
-								<label>Modelo</label>								
-								<input class="form-control" value='' name='modelo' placeholder="Escribir el modelo del equipo.">
-							</div>		
-							<div class="col-lg-6" class="form-group">								
-								<label>Remito</label>								
-								<input class="form-control" value='' name='remito' placeholder="Escribir # Remito si aplica.">
-							</div>
-							<div class="col-lg-6" class="form-group">								
-								<label>Serial</label>								
-								<input class="form-control" value='' name='serial' placeholder="Escribir # de serie si aplica.">
-							</div>
-							<div class="col-lg-6" class="form-group">								
-								<label>Componente</label>								
-								<textarea class="form-control" value='' name='componente' placeholder="Escriba Componente"></textarea>		
-							</div>
-							<div class="col-lg-6" class="form-group">								
-								<label>Observacion</label>								
-								<textarea class="form-control" value='' name='observacion' placeholder="Escriba una Observacion"></textarea>
-							</div>
-							
-						
-						</DIV>
-						<div class="panel-body">
-							<div class="col-lg-6" class="form-group">								
-								<button  type ="button" class="btn btn-online btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal" >Guardar</button>
-							</div>	
-							<div class="col-lg-6" class="form-group">								
-								<button  class="btn btn-online btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal" disabled >Modificar</button>
-							</div>
-						</div>
-						
-						<div class="panel-body">
-								
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Enviar Datos</h4>
-                                        </div>
-                                        <div class="modal-body">                                            
-											<div class="row">	
-												<div class="col-lg-12" class="form-group">	
-													<p>Esta seguro que desea guardar los datos?</p>
-												</DIV>
-											</div>											
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Aceptar</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-							</form><!--formulario registro de envios-->
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /.row -->
+            <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-24">
                     <div class="panel panel-green">
                         <div class="panel-heading">
-                            Envios realizados en Mapfre hasta el 11 de Diciembre del 2017
+							Listado de Equipos del AD (PAR)
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-							                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>componente</th>
-                                            <th>modelo</th>
-                                            <th>marca</th>
-                                            <th>serial version</th>
-                                            <th>usuario</th>
-                                            <th>ubicacion</th>
-                                            <th>crq</th>
-                                            <th>Fecha</th>
+											<th>Oficina</th>
+                                            <th>Nombreequipo</th>
+                                            <th>Ip</th>
+                                            <th>Sis_operativo</th>          
+                                            <th>Parlandesk</th>
+                                            <th>UserLandesk</th>
+                                            <th>ReportLandesk</th>
+                                            <th>ParMcAffe</th>
+                                            <th>UserMcAffe</th>
+											<th>Arquitectura Version</th>
+                                            <th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Memoria</th>
+                                            <th>Cpu</th>  
+											<th>ComuniMcAffe</th>
+                                            		
                                         </tr>
                                     </thead>
-                                    <tbody>  
-										<?php
-										require_once 'conexcion.php';
+                                    <tbody>                                             
+										<?php 
 										// Conectando y seleccionado la base de datos  
-										$dbconn = conectar_PostgreSQL();
-										echo $dbconn;
-										/*
 										$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")
 											or die('No se ha podido conectar: ' . pg_last_error());
-											
-											*/
 
-										// Realizando una consulta SQL
-										$query = 'SELECT componente,modelo,marca,serial,usuario,ubicacion,crq,fecha_envio FROM envios order by componente asc';
+										// Realizando una consulta SQL  MUESTRA TODOS LOS EQUIPOS DISPONIBLES CON SUS DATOS SEGUN MCAFEE
+
+										//consulta con la tabla equipos_horacio
+										//$query = 'SELECT nombreequipo,ip,sis_operativo,arquitectura,arquitectura2,marca,modelo,memoria,nombre_puesto,direccion,ubicacion_fiscal_emple,usuario, count(*) as repite  FROM equipos_horacio group by nombreequipo,ip,sis_operativo,arquitectura,arquitectura2,marca,modelo,memoria,nombre_puesto,direccion,ubicacion_fiscal_emple,usuario order by repite desc ';
+										//consulta con la tabla equipos_ad
+										/*
+
+										$query = 'SELECT nombreequipo,ip,sis_operativo,arquitectura,marca,modelo,memoria,cpu,(select oficina from ofired where SUBSTRING(ip,1,9)=SUBSTRING(dir_red,1,9) limit 1)   FROM equipos_ad group by nombreequipo,ip,sis_operativo,arquitectura,marca,modelo,memoria,cpu  ';
+										*/
+
+										//select * from equiposadcompleto where parlandesk is null
+										$query = 'SELECT par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,parmcaffe,usuariomcaffe,ult_comunimcaffe,(select oficina from ofired where SUBSTRING(ip_ad,1,9)=SUBSTRING(dir_red,1,9) limit 1)   FROM equiposadcompleto group by par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,usuariomcaffe,ult_comunimcaffe,parmcaffe';
+
+
+										/*LISTADO DE EQUIPOS REVISAR LANDESK AL 03 09 2017 LA CONSULTA SE REALIZA CON LA TABLA COMPARAR
+
+										$query = 'SELECT c.nombrepar,e.ip,usuario,e.tipoequipo,e.tiposistema,e.fechaultanti,e.versionanti,e.ubiacacionequipo 
+										FROM  comparar as c  full join equipos as e on e.nombrepar=c.nombrepar order by c.nombrepar asc';
+										*/
+
 										$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 										// Imprimiendo los resultados en HTML
 										 $cmdtuples= pg_affected_rows($result); 
 										 
-
+										 
 										if (!$result) {
-											echo "Ocurrió un error.\n";
-											exit;
+										  echo "Ocurrió un error.\n";
+										  exit;
 										}
+
 										while ($row = pg_fetch_row($result)) {
-										echo "<tr>
+										  echo "<tr>
+											<td>$row[14]</td>
 											<td>$row[0]</td>
 											<td>$row[1]</td>
 											<td>$row[2]</td>
+											
+											<td>$row[8]</td> 
+											<td>$row[9]</td>  
+											<td>$row[10]</td>  
+											<td>$row[11]</td>  
+											<td>$row[12]</td>  
 											<td>$row[3]</td>
+											
 											<td>$row[4]</td>
 											<td>$row[5]</td>
 											<td>$row[6]</td>  
-											<td>$row[7]</td></tr>";
+											<td>$row[7]</td>
+											
+																						 
+											 <td>$row[13]</td> 											
+											</tr>";
 										}
 										?>
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
-                            <div class="well">
-                                 <p>Hola como estas?</p>
-                            </div>
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -305,14 +255,6 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-	/*$(document).ready(function() {
-		$('#dataTables-example').DataTable( {
-		searchPane: true
-		});
-    });*/
-		
-    </script>
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({

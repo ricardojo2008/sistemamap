@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Verificación de Equipos Mapfre.(Tiene aplicado un filtro de busquedad con los equipos para revisar landesk)</a>
+                <a class="navbar-brand" href="index.html"></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -289,7 +289,7 @@
                                     <a href="EquiposMapfreTodos.php">Equipos / Servidores / Notebook / Detallado</a>
                                 </li>
                                 <li>
-                                    <a href="EquiposMapfreHoracio.php">Equipos AD</a>
+                                    <a href="EquiposMapfreTodosAD.php">Equipos AD</a>
                                 </li>
                                 <li>
                                     <a href="envios.php">Envios</a>
