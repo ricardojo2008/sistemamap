@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -9,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Mapfretec</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,93 +42,18 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html"></a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil Uuasuario</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Actulalizar Perfil</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mapfre<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="EquiposLandesk.php">Equipos Landesk</a>
-                                </li>
-								<li>
-                                    <a href="EquiposMapfreTodos.php">Equipos / Servidores / Notebook / Detallado</a>
-                                </li>
-                                <li>
-                                    <a href="EquiposTodosAD.php">Equipos AD (PAR)</a>
-                                </li>
-                                <li>
-                                    <a href="envios.php">Envios</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-
+        <?php //include("../menues.php");?>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-24">
-                    <h1 class="page-header">Listado de Equipos del AD (PAR) POR OFICINA</h1>
+                    <h1 class="page-header">Merge de Equipos McAffe, Landesk y AD</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-24">
-                    <div class="panel panel-green">
+                    <div class="panel panel-red">
                         <div class="panel-heading">
 							Listado de Equipos del AD (PAR)
                         </div>
@@ -142,7 +66,7 @@
 											<th>Oficina</th>
                                             <th>Nombreequipo</th>
                                             <th>Ip</th>
-                                            <th>Sis_operativo</th>          
+                                            <th>Sis_operativo</th>
                                             <th>Parlandesk</th>
                                             <th>UserLandesk</th>
                                             <th>ReportLandesk</th>
@@ -152,14 +76,16 @@
                                             <th>Marca</th>
                                             <th>Modelo</th>
                                             <th>Memoria</th>
-                                            <th>Cpu</th>  
+                                            <th>Cpu</th>
 											<th>ComuniMcAffe</th>
-                                            		
+											<th>shortpar</th>
+											<th>typequipo</th>
+
                                         </tr>
                                     </thead>
-                                    <tbody>                                             
-										<?php 
-										// Conectando y seleccionado la base de datos  
+                                    <tbody>
+										<?php
+										// Conectando y seleccionado la base de datos
 										$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")
 											or die('No se ha podido conectar: ' . pg_last_error());
 
@@ -174,47 +100,56 @@
 										*/
 
 										//select * from equiposadcompleto where parlandesk is null
-										$query = 'SELECT par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,parmcaffe,usuariomcaffe,ult_comunimcaffe,(select oficina from ofired where SUBSTRING(ip_ad,1,9)=SUBSTRING(dir_red,1,9) limit 1)   FROM equiposadcompleto group by par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,usuariomcaffe,ult_comunimcaffe,parmcaffe';
+										$query = "SELECT par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,parmcaffe,usuariomcaffe,ult_comunimcaffe,(select oficina from ofired where SUBSTRING(ip_ad,1,9)=SUBSTRING(dir_red,1,9) and SPLIT_PART(ip_ad,'.',3)=SPLIT_PART(dir_red,'.',3) limit 1),SPLIT_PART(par_ad,'-',2) as shortpar,SUBSTRING(par_ad,1,3) as typequipo   FROM equiposadcompletoTodos group by par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,usuariomcaffe,ult_comunimcaffe,parmcaffe";
 
 
 										/*LISTADO DE EQUIPOS REVISAR LANDESK AL 03 09 2017 LA CONSULTA SE REALIZA CON LA TABLA COMPARAR
 
-										$query = 'SELECT c.nombrepar,e.ip,usuario,e.tipoequipo,e.tiposistema,e.fechaultanti,e.versionanti,e.ubiacacionequipo 
+										$query = 'SELECT c.nombrepar,e.ip,usuario,e.tipoequipo,e.tiposistema,e.fechaultanti,e.versionanti,e.ubiacacionequipo
 										FROM  comparar as c  full join equipos as e on e.nombrepar=c.nombrepar order by c.nombrepar asc';
 										*/
 
 										$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
 										// Imprimiendo los resultados en HTML
-										 $cmdtuples= pg_affected_rows($result); 
-										 
-										 
+										 $cmdtuples= pg_affected_rows($result);
+
+
 										if (!$result) {
 										  echo "Ocurrió un error.\n";
 										  exit;
 										}
 
 										while ($row = pg_fetch_row($result)) {
+											if(empty($row[4])){
+												$row[4]='Sin Landesk';
+												$valor='sin';
+											}else {
+
+												$valor=$row[4];
+											}
 										  echo "<tr>
 											<td>$row[14]</td>
 											<td>$row[0]</td>
 											<td>$row[1]</td>
 											<td>$row[2]</td>
-											
-											<td>$row[8]</td> 
-											<td>$row[9]</td>  
-											<td>$row[10]</td>  
-											<td>$row[11]</td>  
-											<td>$row[12]</td>  
+
+											<td>$row[8]</td>
+											<td>$row[9]</td>
+											<td>$row[10]</td>
+											<td>$row[11]</td>
+											<td>$row[12]</td>
 											<td>$row[3]</td>
-											
-											<td>$row[4]</td>
+
+											<td>$valor</td>
 											<td>$row[5]</td>
-											<td>$row[6]</td>  
+											<td>$row[6]</td>
 											<td>$row[7]</td>
-											
-																						 
-											 <td>$row[13]</td> 											
+
+
+											 <td>$row[13]</td>
+											 <td>$row[15]</td>
+											 <td>$row[16]</td>
 											</tr>";
 										}
 										?>
@@ -222,7 +157,7 @@
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
-                            
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -231,7 +166,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            
+
         </div>
         <!-- /#page-wrapper -->
 
@@ -258,7 +193,12 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-                responsive: true
+                responsive: true,
+				"scrollY": 600,
+				"scrollX": true,
+				 select: {
+            style: 'multi'
+        }
         });
     });
     </script>

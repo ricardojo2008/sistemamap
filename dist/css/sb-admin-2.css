@@ -26,6 +26,12 @@ body {
         border-left: 1px solid #e7e7e7;
     }
 }
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+
 
 .navbar-top-links {
     margin-right: 0;
