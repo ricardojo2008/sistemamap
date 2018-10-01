@@ -52,7 +52,7 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
                             Equipos Mapfre segun Consola McAfee
                         </div>
@@ -74,16 +74,7 @@
                                     </thead>
                                     <tbody>
 										<?php
-
-										$ultima_linea = system('ls', $retval);
-
-										// Imprimir informacion adicional
-										echo '
-										</pre>
-										<hr />Ultima linea de la salida: ' . $ultima_linea . '
-										<hr />Valor de retorno: ' . $retval;
-
-
+										echo 
 										//<!--  tiposrvipack  ultimo campo que me falta por mostrar en el listado de equipos
 										// Conectando y seleccionado la base de datos
 										$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")

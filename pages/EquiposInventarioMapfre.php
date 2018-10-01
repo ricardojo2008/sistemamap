@@ -69,18 +69,23 @@
     <div id="wrapper">
       <?php include("../menues.php");?>
       <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Información Inventario Mapfre 2018</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<div class="jumbotron">
+							<h1>Mapfre 2018 (Optima PCs)</h1> 
+							<p>Reporte Generado del Inventario Mapfre 2018, solo PCs con nombre del usuario, ubicación, interno e IP.</p> 
+						</div>
+					</div>
+				</div>	
+			</div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-info">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
-                            Reporte Gerando Inventario Mapfre 2018 / Busquedad: S.O: "(S.O."+$valor+")>"    PISO: "("+$valor+")>"
+                            Datos
                         </div>
 						  <!-- <div class="container"> -->
 							<!-- /.panel-heading -->
@@ -89,11 +94,10 @@
 									<table class="table table-striped table-bordered table-hover" id="example">
 										<thead>
 											<tr>
-												<th></th>
 												<th>Nombre</th>
 												<th>S.O</th>
 												<th>Piso</th>
-												<th>Letra</th>
+												<th>Identificador</th>
 												<th>Puesto</th>
 												<th>Usuario</th>
 												<th>Observacion</th>
@@ -102,11 +106,7 @@
 										
 										<tbody>
 										<?php
-											$ultima_linea = system('ls', $retval);
-											// Imprimir informacion adicional
-											echo '
-											</pre>
-											' . $ultima_linea . ': ' . $retval;
+											echo 
 
 											//<!--  tiposrvipack  ultimo campo que me falta por mostrar en el listado de equipos
 											// Conectando y seleccionado la base de datos
@@ -144,9 +144,8 @@
 
 											while ($row = pg_fetch_row($result)) {
 											  echo "<tr>
-												<td></td>
 												<td>$row[0]</td>
-												<td>(S.O=$row[2])></td>
+												<td>S.O=$row[2]</td>
 												<td>($row[10])></td>
 												<td>$row[11]</td>
 												<td>$row[12]</td>

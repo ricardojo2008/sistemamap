@@ -42,20 +42,33 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php //include("../menues.php");?>
-        <div id="page-wrapper">
+        <?php include("../menues.php");?>
+		<div id="page-wrapper">
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<div class="jumbotron">
+							<h1>Reporte Combinados</h1> 
+							<p>Combinado de Equipos McAfee, Landesk y AD. Agosto</p> 
+						</div>
+					</div>
+				</div>	
+			</div>
+			<!--
             <div class="row">
                 <div class="col-lg-24">
-                    <h1 class="page-header">Merge de Equipos McAffe, Landesk y AD</h1>
+                    <h1 class="page-header">Combinado de Equipos McAffe, Landesk y AD</h1>
                 </div>
-                <!-- /.col-lg-12 -->
+                 /.col-lg-12 
             </div>
+			-->
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-24">
-                    <div class="panel panel-red">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
-							Listado de Equipos del AD (PAR)
+							Datos
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -64,22 +77,30 @@
                                     <thead>
                                         <tr>
 											<th>Oficina</th>
-                                            <th>Nombreequipo</th>
+                                            <th>NombrePar</th>
                                             <th>Ip</th>
-                                            <th>Sis_operativo</th>
+                                            <th>SisOpera.</th>
+											<!-- 
                                             <th>Parlandesk</th>
-                                            <th>UserLandesk</th>
+                                             -->
+											<th>Nombre-Apellido</th>
+											<!-- 
                                             <th>ReportLandesk</th>
                                             <th>ParMcAffe</th>
-                                            <th>UserMcAffe</th>
-											<th>Arquitectura Version</th>
+											 -->
+                                            <th>Numma</th>
                                             <th>Marca</th>
                                             <th>Modelo</th>
+											<th>Serial</th>
+											<th>Rep.</th>
+											<!-- 
                                             <th>Memoria</th>
                                             <th>Cpu</th>
 											<th>ComuniMcAffe</th>
+											 
 											<th>shortpar</th>
 											<th>typequipo</th>
+											-->
 
                                         </tr>
                                     </thead>
@@ -100,7 +121,7 @@
 										*/
 
 										//select * from equiposadcompleto where parlandesk is null
-										$query = "SELECT par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,parmcaffe,usuariomcaffe,ult_comunimcaffe,(select oficina from ofired where SUBSTRING(ip_ad,1,9)=SUBSTRING(dir_red,1,9) and SPLIT_PART(ip_ad,'.',3)=SPLIT_PART(dir_red,'.',3) limit 1),SPLIT_PART(par_ad,'-',2) as shortpar,SUBSTRING(par_ad,1,3) as typequipo   FROM equiposadcompletoTodos group by par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,usuariomcaffe,ult_comunimcaffe,parmcaffe";
+										$query = "SELECT par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,parmcaffe,usuariomcaffe,ult_comunimcaffe,(select oficina from ofired where SUBSTRING(ip_ad,1,9)=SUBSTRING(dir_red,1,9) and SPLIT_PART(ip_ad,'.',3)=SPLIT_PART(dir_red,'.',3) limit 1),SPLIT_PART(par_ad,'-',2) as shortpar,SUBSTRING(par_ad,1,3) as typequipo,serial_ad,(select count(*) from equiposadcompletoTodos as equi where equi.par_ad=equiposadcompletoTodos.par_ad ) as cuenta   FROM equiposadcompletoTodos group by par_ad,ip_ad,sistem_ad,arquitectura_ad,marca_ad,modelo_ad,memoria_ad,cpu_ad,parlandesk,usuariolandesk,scanlandesk,usuariomcaffe,ult_comunimcaffe,parmcaffe,serial_ad order by cuenta desc";
 
 
 										/*LISTADO DE EQUIPOS REVISAR LANDESK AL 03 09 2017 LA CONSULTA SE REALIZA CON LA TABLA COMPARAR
@@ -128,21 +149,13 @@
 
 												$valor=$row[4];
 											}
-										  echo "<tr>
-											<td>$row[14]</td>
-											<td>$row[0]</td>
-											<td>$row[1]</td>
+											
+											/*
 											<td>$row[2]</td>
-
-											<td>$row[8]</td>
+											
 											<td>$row[9]</td>
 											<td>$row[10]</td>
-											<td>$row[11]</td>
-											<td>$row[12]</td>
-											<td>$row[3]</td>
-
-											<td>$valor</td>
-											<td>$row[5]</td>
+											
 											<td>$row[6]</td>
 											<td>$row[7]</td>
 
@@ -150,6 +163,26 @@
 											 <td>$row[13]</td>
 											 <td>$row[15]</td>
 											 <td>$row[16]</td>
+											*/
+										  echo "<tr>
+											<td>$row[14]</td>
+											<td>$row[0]</td>
+											<td>$row[1]</td>
+											
+
+											<td>$row[2] - $row[3]</td>
+											 
+											 
+											<td>$row[9]</td>
+											<td>$row[12]</td>
+
+											<td>$valor</td>
+											<td>$row[5]</td>
+											<td>$row[17]</td>
+											<td>$row[18]</td>
+											
+											
+											 
 											</tr>";
 										}
 										?>
@@ -191,14 +224,10 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
+    
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-                responsive: true,
-				"scrollY": 600,
-				"scrollX": true,
-				 select: {
-            style: 'multi'
-        }
+                responsive: true
         });
     });
     </script>

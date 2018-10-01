@@ -43,18 +43,23 @@
     <div id="wrapper">
       <?php include("../menues.php");?>
       <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Información Landesk (Workstation)</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<div class="jumbotron">
+							<h1>Reporte Landesk (Workstation)</h1> 
+							<p>Reporte Generado por Landesk 26 Julio 2018</p> 
+						</div>
+					</div>
+				</div>	
+			</div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-info">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
-                            Reporte Gerando por Landesk 20 Abril 2018
+                            Datos
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -75,10 +80,7 @@
 									<?php
 										$ultima_linea = system('ls', $retval);
 										// Imprimir informacion adicional
-										echo '
-										</pre>
-										<hr />Ultima linea de la salida: ' . $ultima_linea . '
-										<hr />Valor de retorno: ' . $retval;
+										echo 
 
 										//<!--  tiposrvipack  ultimo campo que me falta por mostrar en el listado de equipos
 										// Conectando y seleccionado la base de datos

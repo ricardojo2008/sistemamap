@@ -173,40 +173,40 @@
                                     </thead>
                                     <tbody>
 										<?php
-										require_once 'conexcion.php';
-										// Conectando y seleccionado la base de datos
-										$dbconn = conectar_PostgreSQL();
-										//echo $dbconn;
-										/*
-										$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")
-											or die('No se ha podido conectar: ' . pg_last_error());
+											require_once 'conexcion.php';
+											// Conectando y seleccionado la base de datos
+											$dbconn = conectar_PostgreSQL();
+											//echo $dbconn;
+											/*
+											$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")
+												or die('No se ha podido conectar: ' . pg_last_error());
 
-											*/
+												*/
 
-										// Realizando una consulta SQL
-										$query = 'select id,componente,modelo,marca,serial,usuario,ubicacion,remito,fecha_envio FROM envios ORDER BY id DESC';
-										$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
+											// Realizando una consulta SQL
+											$query = 'select id,componente,modelo,marca,serial,usuario,ubicacion,remito,fecha_envio FROM envios ORDER BY id DESC';
+											$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
 
-										// Imprimiendo los resultados en HTML
+											// Imprimiendo los resultados en HTML
 
-										if (!$result) {
-											echo "Ocurrió un error.\n";
-											exit;
-										}
-										while ($row = pg_fetch_row($result)) {
-										echo"<a href='envios.php?id='$row[0]''><tr> <a href='formenvios.php?id='$row[0]',hacer='editar''>
-											<td>$row[0]</td>
-											<td>$row[1]</td>
-											<td>$row[2]</td>
-											<td>$row[3]</td>
-											<td>$row[4]</td>
-											<td>$row[5]</td>
-											<td>$row[6]</td>
-											<td>$row[7]</td>
-											<td><input class='form-control' value='' name='serial' value='' placeholder='$row[8]'></td>
-											<td><a href='envios.php?id=$row[0]'>editar</a></td>
-											</tr>";
-										}
+											if (!$result) {
+												echo "Ocurrió un error.\n";
+												exit;
+											}
+											while ($row = pg_fetch_row($result)) {
+												echo"<a href='envios.php?id='$row[0]''><tr> <a href='formenvios.php?id='$row[0]',hacer='editar''>
+												<td>$row[0]</td>
+												<td>$row[1]</td>
+												<td>$row[2]</td>
+												<td>$row[3]</td>
+												<td>$row[4]</td>
+												<td>$row[5]</td>
+												<td>$row[6]</td>
+												<td>$row[7]</td>
+												<td><input class='form-control' value='' name='serial' value='' placeholder='$row[8]'></td>
+												<td><a href='envios.php?id=$row[0]'>editar</a></td>
+												</tr>";
+											}
 										?>
                                     </tbody>
                                 </table>

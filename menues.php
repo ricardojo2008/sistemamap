@@ -70,6 +70,13 @@ if(!isset($_SESSION['logged_in'])){
                         <li>
                             <a href="RecambioMendoza.php"><i class="fa fa-refresh"></i> Recambio Mendoza</a>
                         </li>
+						<li>
+                            <a href="envios.php"><i class="fa fa-paper-plane"></i> Gestion de Envios</a>
+                        </li>
+						
+						<li>
+                            <a href="BajasPcRecambio.php"><i class="fa fa-bitbucket"></i> Reporte Equipos Cambiados</a>
+                        </li>
 						-->
 						<li>
                             <a href="EquiposLandesk.php"><i class="fa fa-desktop"></i> Reporte Equipos (Landesk)</a>
@@ -79,22 +86,15 @@ if(!isset($_SESSION['logged_in'])){
                         </li>						
                         <li>
                             <a href="EquiposTodosAD.php"><i class="fa fa-sitemap"></i> Reporte PC Combinados</a>
-                        </li>
-						<!--
-						<li>
-                            <a href="BajasPcRecambio.php"><i class="fa fa-bitbucket"></i> Reporte Equipos Cambiados</a>
-                        </li>
-						-->
+                        </li>						
 						<?php //if( $_SERVER['REMOTE_ADDR'] == '10.220.1.86'){?>
-						<li>
-                            <a href="envios.php"><i class="fa fa-paper-plane"></i> Gestion de Envios</a>
-                        </li>
+						
 						<li>
                             <a href="EquiposInventarioMapfre.php"><i class="fa fa-desktop"></i> Inventario Mapfre (new)</a>
                         </li>
 						<?php //}?>
 						<li>
-                            <a href="..\sismapfre\logout.php"><i class="fa fa-bitbucket"></i> Salir</a>
+                            <a href="..\..\sismapfre\logout.php"><i class="fa fa-bitbucket"></i> Salir</a>
                         </li>
 						
 						<!--

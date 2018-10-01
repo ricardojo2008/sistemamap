@@ -43,18 +43,23 @@
     <div id="wrapper">
        <?php include("../menues.php");?>
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Información McAffe</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<div class="jumbotron">
+							<h1>Reporte McAfee</h1> 
+							<p>Equipos / Notebook / Detallado segun Consola McAfee 17 Julio 2018</p> 
+						</div>
+					</div>
+				</div>	
+			</div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-danger">
                         <div class="panel-heading">
-                            Equipos / Notebook / Detallado segun Consola McAffe 26 Abril 2018
+                            Datos
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -64,26 +69,15 @@
                                         <tr>
                                             <th>Par</th>
                                             <th>Ip</th>
-                                            <th>User.</th>
                                             <th>Sistema</th>
                                             <th>Comu.</th>
-                                            <th>Registro</th>
+                                            <th>Grupo</th>
                                             <th>Cpu</th>
-                                            <th>Ram</th>
-                                            <th>Dns</th>
-
-
                                         </tr>
                                     </thead>
                                     <tbody>
 										<?php
-											$ultima_linea = system('ls', $retval);
-											// Imprimir informacion adicional
-											echo '
-											</pre>
-											<hr />Ultima linea de la salida: ' . $ultima_linea . '
-											<hr />Valor de retorno: ' . $retval;
-
+											echo 
 											//<!--  tiposrvipack  ultimo campo que me falta por mostrar en el listado de equipos
 											// Conectando y seleccionado la base de datos
 											$dbconn = pg_connect("host='localhost' dbname='mapfre' user='postgres' password='COPO2009'")
@@ -123,15 +117,12 @@
 												echo "$row[0]". $salida;
 												echo "<br>". $salida;*/
 											  echo "<tr>
-												<th>$row[0]</th>
-												<th>$row[1]</th>
-												<th>$row[2]</th>
-												<th>$row[3]</th>
-												<th>$row[4]</th>
-												<th>$row[5]</th>
-												<th>$row[6]</th>
-												<th>$row[7]</th>
-												<th>$row[8]</th>
+												<td>$row[0]</td>
+												<td>$row[1]</td>
+												<td>$row[3]</td>
+												<td>$row[4]</td>
+												<td>$row[5]</td>
+												<td>$row[6]</td>
 												</tr>";
 											}
 										?>

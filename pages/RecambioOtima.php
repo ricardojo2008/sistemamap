@@ -135,7 +135,7 @@
 											exit;
 										}
 										while ($row = pg_fetch_row($result)) {
-											$apagar="";
+											$apagar="disabled";
 											$muestraboton="<button $apagar onClick='verificar($row[0])' class='btn btn-default'><i class='fa fa-save'></i></button>";
 											$muestraboton2="<button $apagar onClick='imprimirPla($row[0])' class='btn btn-default'><i class='fa fa-folder-open'></i></button>";
 											$valor1=strtoupper($row[3]);
