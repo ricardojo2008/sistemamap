@@ -6,6 +6,17 @@ if(!isset($_SESSION['logged_in'])){
 	header('Location: ..\..\sismapfre\index.php');
 }
 ?>
+<style>
+    .navbar {
+        position: top;
+      background-color: red !important; 
+      color: white !important;
+    }
+    .jumbotron {
+      background-color: red !important; 
+      color: white !important;
+    }    
+</style>
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,18 +29,21 @@ if(!isset($_SESSION['logged_in'])){
     </div>
     <!-- /.navbar-header -->
 
-    <ul class="nav navbar-top-links navbar-right">
+    <div class="nav navbar-top-links navbar-right">
+        <!--
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-            <!-- /.dropdown -->
-        <li class="dropdown"><?php echo "Nos Visita:" . $_SERVER['REMOTE_ADDR'];?>
+        </li>
+        <!-- /.dropdown -->
+        <li class="dropdown"><b><?php echo "Bienvenido ". $_SESSION['name'] ."  Hots:". $_SERVER['REMOTE_ADDR'];?><b>
+        </li>
 		<input type='hidden' id='ipcliente' value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-             <ul class="dropdown-menu dropdown-user">
+            <ul class="dropdown-menu dropdown-user">
                 <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil Uuasuario <input type="hidden" id='userlog'  value="" ></a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Actulalizar Perfil</a>
@@ -41,7 +55,7 @@ if(!isset($_SESSION['logged_in'])){
             <!-- /.dropdown-user -->
         </li>
         <!-- /.dropdown -->
-    </ul>
+    </div>
     <!-- /.navbar-top-links -->
 
     <div class="navbar-default sidebar" role="navigation">
@@ -49,7 +63,7 @@ if(!isset($_SESSION['logged_in'])){
             <ul class="nav" id="side-menu">
                 
                  <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Mapfre<span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-apple"></i> Mapfre<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 						<!--
 						<li>
@@ -77,12 +91,13 @@ if(!isset($_SESSION['logged_in'])){
 						<li>
                             <a href="BajasPcRecambio.php"><i class="fa fa-bitbucket"></i> Reporte Equipos Cambiados</a>
                         </li>
-						-->
-						<li>
-                            <a href="EquiposLandesk.php"><i class="fa fa-desktop"></i> Reporte Equipos (Landesk)</a>
-                        </li>
                         <li>
-                            <a href="EquiposMapfreTodos.php"><i class="fa  fa-desktop"></i> Reporte Equipos (McAffe)</a>
+                            <a href="EquiposLandesk.php"><i class="glyphicon glyphicon-flash"></i> Reporte Landesk</a>
+                        </li>
+						-->
+						
+                        <li>
+                            <a href="EquiposMapfreTodos.php"><i class="glyphicon glyphicon-qrcode"></i> Reporte McAffe</a>
                         </li>						
                         <li>
                             <a href="EquiposTodosAD.php"><i class="fa fa-sitemap"></i> Reporte PC Combinados</a>
@@ -90,11 +105,11 @@ if(!isset($_SESSION['logged_in'])){
 						<?php //if( $_SERVER['REMOTE_ADDR'] == '10.220.1.86'){?>
 						
 						<li>
-                            <a href="EquiposInventarioMapfre.php"><i class="fa fa-desktop"></i> Inventario Mapfre (new)</a>
+                            <a href="EquiposInventarioMapfre.php"><i class="fa fa-desktop"></i> Inventario Mapfre</a>
                         </li>
 						<?php //}?>
 						<li>
-                            <a href="..\..\sismapfre\logout.php"><i class="fa fa-bitbucket"></i> Salir</a>
+                            <a href="..\..\sismapfre\logout.php"><i class="glyphicon glyphicon-off"></i> Salir</a>
                         </li>
 						
 						<!--
